@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.9.19)  15 SEP 2013 20:54
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.9.19)  22 SEP 2013 21:42
 entering extended mode
 **Document.tex
 
@@ -178,44 +178,122 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 78.
+Package color Info: Redefining color shadecolor on input line 86.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 88.
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Package color Info: Redefining color shadecolor on input line 96.
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 98.
+<figure/perth.pdf, id=16, 433.62pt x 289.08pt>
+File: figure/perth.pdf Graphic file (type pdf)
+ <use figure/perth.pdf>
+Package pdftex.def Info: figure/perth.pdf used on input line 92.
+(pdftex.def)             Requested size: 345.0pt x 230.01158pt.
 
-Overfull \hbox (74.99634pt too wide) in paragraph at lines 101--101
+Overfull \hbox (15.0pt too wide) in paragraph at lines 92--93
+[][] 
+ []
+
+Package color Info: Redefining color shadecolor on input line 124.
+[2 <C:/Users/Toshiba/Google Drive/Research/GIT/Dependent-Mixed-Model/LondonR/fi
+gure/perth.pdf>] <figure/perth2.pdf, id=27, 433.62pt x 289.08pt>
+File: figure/perth2.pdf Graphic file (type pdf)
+
+<use figure/perth2.pdf>
+Package pdftex.def Info: figure/perth2.pdf used on input line 134.
+(pdftex.def)             Requested size: 345.0pt x 230.01158pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 134--135
+[][] 
+ []
+
+Package color Info: Redefining color shadecolor on input line 140.
+
+Overfull \hbox (164.24556pt too wide) in paragraph at lines 145--145
+[]\OT1/cmtt/m/n/10 aryr2 <- []arima[](da$water, []c[](arOrder, 0, 0), xreg = []
+cbind[](yr = []scale[](da$yr), yr2 = []scale[](da$yr)^2))[] 
+ []
+
+Package color Info: Redefining color shadecolor on input line 164.
+
+Overfull \hbox (11.99689pt too wide) in paragraph at lines 168--168
+[][]\OT1/cmtt/m/n/10 plot[](da$water, type = []"l"[], main = []"AR Fitted Perth
+ Dams Water flow"[])[] 
+ []
+
+[3 <C:/Users/Toshiba/Google Drive/Research/GIT/Dependent-Mixed-Model/LondonR/fi
+gure/perth2.pdf>] <figure/perth3.pdf, id=37, 433.62pt x 289.08pt>
+File: figure/perth3.pdf Graphic file (type pdf)
+
+<use figure/perth3.pdf>
+Package pdftex.def Info: figure/perth3.pdf used on input line 175.
+(pdftex.def)             Requested size: 345.0pt x 230.01158pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 175--176
+[][] 
+ []
+
+Package color Info: Redefining color shadecolor on input line 191.
+
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 193--193
+[]\OT1/cmtt/m/n/10 mod2 <- []depmix[](water ~ 1, data = da, ns = 2, trst = []c[
+](0.9, 0.1, 0, 1), inst = []c[](1,[] 
+ []
+
+[4 <C:/Users/Toshiba/Google Drive/Research/GIT/Dependent-Mixed-Model/LondonR/fi
+gure/perth3.pdf>]
+Package color Info: Redefining color shadecolor on input line 249.
+ [5]
+Overfull \hbox (64.49643pt too wide) in paragraph at lines 282--282
+[]\OT1/cmtt/m/n/10 ##   [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1[] 
+ []
+
+
+Overfull \hbox (64.49643pt too wide) in paragraph at lines 282--282
+[]\OT1/cmtt/m/n/10 ##  [36] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 2 2 2 2 2 2[] 
+ []
+
+
+Overfull \hbox (32.9967pt too wide) in paragraph at lines 282--282
+[]\OT1/cmtt/m/n/10 ##  [71] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ 2 2 2 2 2 2[] 
+ []
+
+Package color Info: Redefining color shadecolor on input line 288.
+
+Overfull \hbox (74.99634pt too wide) in paragraph at lines 293--293
 []\OT1/cmtt/m/n/10 sp500 <- []getYahooData[]([]"^GSPC"[], start = 19500101, end
  = 20120909, freq = []"daily"[])[] 
  []
 
-Package color Info: Redefining color shadecolor on input line 112.
-<figure/plot.pdf, id=16, 433.62pt x 289.08pt>
-File: figure/plot.pdf Graphic file (type pdf)
- <use figure/plot.pdf>
-Package pdftex.def Info: figure/plot.pdf used on input line 117.
+Package color Info: Redefining color shadecolor on input line 304.
+<figure/plot2.pdf, id=50, 433.62pt x 289.08pt>
+File: figure/plot2.pdf Graphic file (type pdf)
+ <use figure/plot2.pdf>
+Package pdftex.def Info: figure/plot2.pdf used on input line 309.
 (pdftex.def)             Requested size: 345.0pt x 230.01158pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 117--118
+Overfull \hbox (15.0pt too wide) in paragraph at lines 309--310
 [][] 
  []
 
-Package color Info: Redefining color shadecolor on input line 123.
-[2 <C:/Users/Toshiba/Google Drive/Research/GIT/Dependent-Mixed-Model/LondonR/fi
-gure/plot.pdf>]
-Package color Info: Redefining color shadecolor on input line 137.
- [3] [4]
+[6]
+Package color Info: Redefining color shadecolor on input line 315.
+Package color Info: Redefining color shadecolor on input line 329.
+ [7 <C:/Users/Toshiba/Google Drive/Research/GIT/Dependent-Mixed-Model/LondonR/f
+igure/plot2.pdf>] [8]
 ("C:\Users\Toshiba\Google Drive\Research\GIT\Dependent-Mixed-Model\LondonR\Docu
 ment.aux") ) 
 Here is how much of TeX's memory you used:
- 1880 strings out of 494045
- 24425 string characters out of 3145963
- 81077 words of memory out of 3000000
- 5174 multiletter control sequences out of 15000+200000
+ 1895 strings out of 494045
+ 24716 string characters out of 3145963
+ 82077 words of memory out of 3000000
+ 5186 multiletter control sequences out of 15000+200000
  8922 words of font info for 33 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 27i,7n,20p,374b,245s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,9n,20p,374b,245s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
 mbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cme
 x10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi1
@@ -228,9 +306,9 @@ m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Fil
 es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files
  (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Document.pdf (4 pages, 156312 bytes).
+Output written on Document.pdf (8 pages, 183545 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
+ 105 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

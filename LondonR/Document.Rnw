@@ -11,6 +11,7 @@ This is a file to run through the presentation that was made at the September 20
 I am not sure how to load the appropriate packages (so this can probably be deleted in the future).  However, I will do that in a chunk. The information is in the title:  dependent mixed models. This is to implement micture and hidden Markov models. 
 <<packages, echo = FALSE, warning=FALSE, message=FALSE>>=
 require('depmixS4')
+require('xtable')
 @
 \section{Mixed Models}
 From the London R presentation. In a \emph{mixture model} each observation is assumed to be drawn from a number of distinct subpopulation (``component distributions'' according to Maarten).  The distribution from which the observation is drawn is not directly observable and therefore it is represented by a \emph{latent state}.  
@@ -27,6 +28,52 @@ where,
 \end{itemize}
 \section{Perth Water Example}
 
+First download the data and plot. 
+<<perth, echo=TRUE, fig.height=4, fig.width=6, cache=TRUE>>=
+da <- read.csv("./Perth.csv", header = TRUE)
+plot(da$water, type = 'l', main = "Perth Dams Water flow")
+@               
+The aim is to model the water flow. the typical method would try to impose a level model (lm1) or a linear (lmyr) or quadratic model (lmyr2).
+<<typical, echo = TRUE, results='asis'>>=
+lm1 <- lm(da$water ~ 1, data = da)
+lmyr <- lm(da$water ~ yr, data = da)
+lmyr2 <- lm(da$water ~ yr + I(yr^2), data = da)
+dd <- xtable(anova(lm1, lmyr, lmyr2), digits = 2)
+print(dd)
+@
+The linear and quadratic equiations show a vaiance that is significantly lower than the model with just the fixed level. 
+<<perth2, echo=TRUE, fig.height=4, fig.width=6, cache=TRUE>>=
+da <- read.csv("./Perth.csv", header = TRUE)
+plot(da$water, type = 'l', main = "Fitted Perth Dams Water flow")
+lines(lm1$fitted, col = 'dark green')
+lines(lmyr$fitted, col = 'blue')
+lines(lmyr2$fitted, col = 'red')
+legend(x = 80, y = 650, legend = c("lm1", "lmyr", "lmyr2"))
+@
+AR models can also be used and assessed using the Akaike Information Criteria or Bayesian Information Criteria. 
+<<AR, echo=TRUE, cache = TRUE, tidy=TRUE>>=
+arOrder <- ar(da$water)$order
+ar1 <- arima(da$water, c(arOrder, 0, 0))
+aryr <- arima(da$water, c(arOrder, 0, 0), 
+              xreg = da$yr)
+aryr2 <- arima(da$water, c(arOrder, 0, 0), 
+               xreg = cbind(yr = scale(da$yr),
+              yr2 = scale(da$yr)^2))
+print(c(ar1 = AIC(ar1), aryr = AIC(aryr), aryr2 = AIC(aryr2)))
+print(c(lm1 = AIC(lm1), lmyr = AIC(lmyr), lmyr2 = AIC(lmyr2)))
+@
+
+<<perth3, echo=TRUE, fig.height=4, fig.width=6, cache=TRUE>>=
+require(forecast)
+da <- read.csv("./Perth.csv", header = TRUE)
+plot(da$water, type = 'l', main = "AR Fitted Perth Dams Water flow")
+lines(fitted(aryr), col = 'dark green')
+lines(fitted(aryr2), col = 'blue')
+lines(fitted(ar1), col = 'red')
+legend(x = 80, y = 650, legend = c("ar1", "aryr", "aryr2"))
+@
+
+
 \section{Change Model}
 This is a model that assumes one or more discrete change points in the data. It may be the mean, trend or other parameters that may change. In this example with the S\&P 500 it is the mean and the standard deviation. There is a transition matrix that defines the change points.  For example, if there is one transition the matrix would be along the lines of 
 \begin{equation*}
@@ -36,7 +83,22 @@ p_1 & 1 - p_1 \\
 \end{pmatrix}
 \end{equation*}
 Where $p_1$ is the probability that the system will be in state 1.  One there is a switch to state two.  This matrix can be extended for more states. Need to come back and look at this if I can get the data. 
+<<break>>=
+mod2 <- depmix(water ~ 1, data = da, ns = 2, 
+               trst = c(0.9, 0.1, 0, 1), inst = c(1,0))
+set.seed(1)
+fm2 <- fit(mod2, verbose = FALSE)
+summary(fm2)
+@
+The information here is the inital state probabilities, the transition model for state 1 and state 2; the response model for state 1 and the response model for state 2.  These show a mean value of 337 and 141 respectively and a standard deviation of 204.1 and 76.16.  There is a decline in the amount of water and there is a fall in the variability. 
 
+The posterior() function can be used to obtain the maximum \emph{a posteriori} state sequence (column 1) and the posterior state probabilities (remaining columns).  
+<<pst>>=
+pst <- posterior(fm2)
+head(pst)
+tail(pst)
+pst[,1]
+@
 \section{S\&P 500 Example}
 <<SP, echo = TRUE, warning=FALSE, message=FALSE, tidy=TRUE>>=
 library(TTR)
@@ -51,17 +113,17 @@ sp500$logret <- log(sp500$Close) -
 sp500 <- na.exclude(sp500)
 @
 Now plot the data to get an idea of what it looks like. 
-<<plot, fig.height=4, fig.width = 6>>=
+<<plot2, fig.height=4, fig.width = 6>>=
 plot(sp500$logret, main = "S&P 500 log returns")
 @
-The aim is to identify the bull and bear markets. First set up the model (mod). This is a logistic regression ("logret") with two states. Then fit the model.   
+The aim is to identify the bull and bear markets. First set up the model (mod). This is a model of the log return with two states. Then fit the model.   
 <<bull, echo = TRUE>>=
 mod <- depmix(logret ~ 1, nstates = 2, data = sp500)
 set.seed(1)
 fm2 <- fit(mod, verbose = FALSE)
 @
 The number of iterations and the log likelihood is printed.  Now summarise the information. 
-<<Summary>>=
+<<Summary, >>=
 depmixS4::summary(fm2)
 @
 

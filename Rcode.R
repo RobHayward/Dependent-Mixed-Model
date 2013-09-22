@@ -1,0 +1,1 @@
+da <- read.csv("perth.csv", header = TRUE)
