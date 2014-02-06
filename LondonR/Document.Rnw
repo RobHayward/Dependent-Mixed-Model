@@ -126,11 +126,19 @@ The number of iterations and the log likelihood is printed.  Now summarise the i
 <<Summary, >>=
 depmixS4::summary(fm2)
 @
+
 <<ts, tidy=TRUE>>=
 tsp500 <- as.ts(sp500)
 pbear <- as.ts(posterior(fm2)[,2])
 tsp(pbear) <- tsp(tsp500)
-plot(cbind(tsp500[,6], pbear), main = "Posterior Probability of state 1:
-     Volatile, negative market")
+plot(cbind(tsp500[,6], pbear), main = "Posterior probability of state 1")
 @
+This shows the probability that the system is in state 1 (which is the volatilty and negative market conditions)
+<<ts2, tidy=TRUE>>=
+mapbear <- as.ts(posterior(fm2)[,1] == 1)
+tsp(mapbear) <- tsp(tsp500)
+tsp(pbear) <- tsp(tsp500)
+plot(cbind(tsp500[,6], mapbear), main = "Maximum a posteriori state sequence")
+@
+This shows the most likely state that the system is in.  This can be used to identify the periods of crisis. 
 \end{document}
