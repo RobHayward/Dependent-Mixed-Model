@@ -8,7 +8,7 @@
 
 This is a file to run through the presentation that was made at the September 2013 London R by Maarten Speekenbrink.  
 
-I am not sure how to load the appropriate packages (so this can probably be deleted in the future).  However, I will do that in a chunk. The information is in the title:  dependent mixed models. This is to implement micture and hidden Markov models. 
+I am not sure how to load the appropriate packages (so this can probably be deleted in the future).  However, I will do that in a chunk. The information is in the title:  dependent mixed models. This is to implement mixture and hidden Markov models. 
 <<packages, echo = FALSE, warning=FALSE, message=FALSE>>=
 require('depmixS4')
 require('xtable')
@@ -126,6 +126,11 @@ The number of iterations and the log likelihood is printed.  Now summarise the i
 <<Summary, >>=
 depmixS4::summary(fm2)
 @
-
-
+<<ts, tidy=TRUE>>=
+tsp500 <- as.ts(sp500)
+pbear <- as.ts(posterior(fm2)[,2])
+tsp(pbear) <- tsp(tsp500)
+plot(cbind(tsp500[,6], pbear), main = "Posterior Probability of state 1:
+     Volatile, negative market")
+@
 \end{document}
